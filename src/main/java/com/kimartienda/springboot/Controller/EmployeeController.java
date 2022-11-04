@@ -15,6 +15,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
+    //Injected Employee Repo which extends JpaRepository that has API CrudRepository.
     private EmployeeRepository employeeRepository;
 
     @GetMapping
@@ -23,7 +24,7 @@ public class EmployeeController {
     }
 
     // Create Employee REST API
-    @PostMapping
+    @PostMapping(path = "/create")
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeRepository.save(employee);
     }
