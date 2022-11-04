@@ -15,7 +15,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    //Injected Employee Repo which extends JpaRepository that has API CrudRepository.
+    //Injected dependency, Employee Repo which extends JpaRepository that has API CrudRepository.
     private EmployeeRepository employeeRepository;
 
     @GetMapping
@@ -30,6 +30,7 @@ public class EmployeeController {
     }
 
     //Get Employee by ID
+    // ResponseEntity represents the whole HTTP response: status code, headers, and body.
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exists with id:" + id));
